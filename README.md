@@ -4,17 +4,28 @@
 
 # React Native Circle Slider
 
-##### React native circle slider using [react-native-svg](https://github.com/react-native-community/react-native-svg) and [PanResponder](https://facebook.github.io/react-native/docs/panresponder.html).
+### React native circle slider using [react-native-svg](https://github.com/react-native-community/react-native-svg) and [PanResponder](https://facebook.github.io/react-native/docs/panresponder.html).
+
+### This project is forked from original: [react-native-circle-slider by raymondchooi](http://facebook.github.io/react-native/docs/getting-started.html)
+
+## New
+#### Allow to track music passing 2 props:
+```js
+durationInSeconds={221} //Value of total seconds
+value={23} //Value current position of player
+```
 
 <img src="https://media.giphy.com/media/Att6gob5HMAxQuIOTy/giphy.gif" alt="Circle Slider preview" width="320px"></img>
+<img src="gallery/track.gif" alt="Circle Slider Track preview" width="320px"></img>
 
 ## Install
 
-This component is built with `React Native 0.39+` and works for Android and iOS.
+This component is built with `React Native 0.39+` and works for Android and iOS. Also to works, react-native-svg needs to be installed
 
 **Install with [npm](https://www.npmjs.com/):**
 
 ```sh
+npm i react-native-svg
 npm i --save react-native-circle-slider
 ```
 
@@ -46,23 +57,25 @@ export default class CircleSliderContainer extends Component {
 
 ## Properties
 
-| Property name     | Type       | Default       | Description                           |
-| ----------------- | ---------- | ------------- | ------------------------------------- |
-| **btnRadius**     | _number_   | 15            | The radius of the small button        |
-| **dialRadius**    | _number_   | 130           | The radius of the circle slider       |
-| **dialWidth**     | _number_   | 5             | The width of the slider line          |
-| **meterColor**    | _string_   | '#0cd'        | The color of slider line              |
-| **fillColor**     | _string_   | 'none'        | The color of circle fill              |
-| **onValueChange** | _function_ | x => x        | Value to print on button (x=degrees)  |
-| **textColor**     | _string_   | '#fff'        | The color of the button text          |
-| **textSize**      | _number_   | 10            | The size of the button text           |
-| **strokeColor**   | _string_   | '#fff         | The color of stroke above the line    |
-| **strokeWidth**   | _number_   | 0.5           | The size of stroke above the line     |
-| **value**         | _number_   | 0             | The value of the slider (degrees)     |
-| **min**           | _number_   | 0             | The min limit of the slider (degrees) |
-| **max**           | _number_   | 359           | The max limit of the slider (degrees) |
-| **xCenter**       | _number_   | Screen center | The x coordinates of rotation center  |
-| **yCenter**       | _number_   | Screen center | The y coordinates of rotation center  |
+| Property name     	| Type       | Default       	| Description                           |
+| ----------------- 	| ---------- | ------------- 	| ------------------------------------- |
+| **btnRadius**     	| _number_   | 15            	| The radius of the small button        |
+| **dialRadius**    	| _number_   | 130           	| The radius of the circle slider       |
+| **dialWidth**     	| _number_   | 5             	| The width of the slider line          |
+| **meterColor**    	| _string_   | '#0cd'        	| The color of slider line              |
+| **fillColor**     	| _string_   | 'none'        	| The color of circle fill              |
+| **onValueChange** 	| _function_ | x => x        	| Value to print on button (x=degrees)  |
+| **textColor**     	| _string_   | '#fff'        	| The color of the button text          |
+| **textSize**      	| _number_   | 10            	| The size of the button text           |
+| **strokeColor**   	| _string_   | '#fff         	| The color of stroke above the line    |
+| **strokeWidth**   	| _number_   | 0.5           	| The size of stroke above the line     |
+| **value**         	| _number_   | 0             	| The value of the slider (degrees)     |
+| **min**           	| _number_   | 0             	| The min limit of the slider (degrees) |
+| **max**               | _number_   | 359           	| The max limit of the slider (degrees) |
+| **xCenter**           | _number_   | Screen center 	| The x coordinates of rotation center  |
+| **yCenter**           | _number_   | Screen center 	| The y coordinates of rotation center  |
+| **showText**          | _boolean_  | true 	 	| Show/Hide text on the button text     |
+| **durationInSeconds** | _number_   | 0 		| Duration in seconds, that slider will track  |
 
 ## Notes
 
