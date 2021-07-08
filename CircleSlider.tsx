@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef, useCallback } from "react";
+import React, { FC, useState, useRef, useCallback, useEffect } from "react";
 import { PanResponder, Dimensions } from "react-native";
 import Svg, { Path, Circle, G, Text } from "react-native-svg";
 
@@ -18,6 +18,9 @@ interface Props {
 	xCenter?: number;
 	yCenter?: number;
 	onValueChange?: (x: number) => number;
+
+	showText?: boolean;
+	durationInSeconds?: number;
 }
 
 const CircleSlider: FC<Props> = ({
@@ -36,8 +39,37 @@ const CircleSlider: FC<Props> = ({
 	xCenter = Dimensions.get("window").width / 2,
 	yCenter = Dimensions.get("window").height / 2,
 	onValueChange = (x) => x,
+	durationInSeconds = 0,
+	showText = true, 
 }) => {
 	const [angle, setAngle] = useState(value);
+	const [step, setStep] = useState(0)
+
+	/**
+	 * Effect to set value of numbers of steps over total duration
+	 * that the slider will do in the circuference.
+	 * */
+	useEffect(() => {
+		if(durationInSeconds > 0) {
+			setStep(359/durationInSeconds);
+		}
+		
+	},[durationInSeconds])
+
+
+	/**
+	 * Effect to calculate value of angle of slider
+	 * based in the prop: value
+	 * */
+	useEffect(() => {
+		if(angle <= 359 && value <= durationInSeconds) {
+			setAngle(step + (value*step-step))
+		}
+		else {
+			setAngle(0)
+		}
+	}, [value, durationInSeconds])
+	
 
 	const panResponder = useRef(
 		PanResponder.create({
@@ -49,7 +81,7 @@ const CircleSlider: FC<Props> = ({
 				let xOrigin = xCenter - (dialRadius + btnRadius);
 				let yOrigin = yCenter - (dialRadius + btnRadius);
 				let a = cartesianToPolar(gs.moveX - xOrigin, gs.moveY - yOrigin);
-
+				
 				if (a <= min) {
 					setAngle(min);
 				} else if (a >= max) {
@@ -126,15 +158,17 @@ const CircleSlider: FC<Props> = ({
 					fill={meterColor}
 					{...panResponder.panHandlers}
 				/>
-				<Text
-					x={bR}
-					y={bR + textSize / 2}
-					fontSize={textSize}
-					fill={textColor}
-					textAnchor="middle"
-				>
-					{onValueChange(angle) + ""}
-				</Text>
+				{ showText &&
+					<Text
+						x={bR}
+						y={bR + textSize / 2}
+						fontSize={textSize}
+						fill={textColor}
+						textAnchor="middle"
+					>
+						{onValueChange(angle) + ""}
+					</Text>
+				}
 			</G>
 		</Svg>
 	);
