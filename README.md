@@ -6,9 +6,9 @@
 
 ### React native circle slider using [react-native-svg](https://github.com/react-native-community/react-native-svg) and [PanResponder](https://facebook.github.io/react-native/docs/panresponder.html).
 
-### This project is forked from original: [react-native-circle-slider by raymondchooi](http://facebook.github.io/react-native/docs/getting-started.html)
+### This project is forked from original: [react-native-circle-slider by raymondchooi](http://facebook.github.io/react-native/docs/getting-started.html) with new features
 
-## New
+
 #### Allow to track music passing 2 props:
 ```js
 durationInSeconds={221} //Value of total seconds
@@ -75,6 +75,7 @@ export default class CircleSliderContainer extends Component {
 | **xCenter**           | _number_   | Screen center 	| The x coordinates of rotation center  |
 | **yCenter**           | _number_   | Screen center 	| The y coordinates of rotation center  |
 | **showText**          | _boolean_  | true 	 	| Show/Hide text on the button text     |
+| **hideThumb**         | _boolean_  | false 	 	| Show/Hide thumb on slider	        |
 | **durationInSeconds** | _number_   | 0 		| Duration in seconds, that slider will track  |
 
 ## Notes
