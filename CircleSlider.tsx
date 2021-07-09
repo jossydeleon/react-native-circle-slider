@@ -18,9 +18,9 @@ interface Props {
 	xCenter?: number;
 	yCenter?: number;
 	onValueChange?: (x: number) => number;
-
 	showText?: boolean;
 	durationInSeconds?: number;
+	hideThumb?: boolean,
 }
 
 const CircleSlider: FC<Props> = ({
@@ -40,7 +40,8 @@ const CircleSlider: FC<Props> = ({
 	yCenter = Dimensions.get("window").height / 2,
 	onValueChange = (x) => x,
 	durationInSeconds = 0,
-	showText = true, 
+	showText = true,
+	hideThumb = false, 
 }) => {
 	const [angle, setAngle] = useState(value);
 	const [step, setStep] = useState(0)
@@ -151,13 +152,13 @@ const CircleSlider: FC<Props> = ({
 			/>
 
 			<G x={endCoord.x - bR} y={endCoord.y - bR}>
-				<Circle
+				{ !hideThumb && <Circle
 					r={bR}
 					cx={bR}
 					cy={bR}
 					fill={meterColor}
 					{...panResponder.panHandlers}
-				/>
+				/> }
 				{ showText &&
 					<Text
 						x={bR}
